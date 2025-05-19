@@ -16,7 +16,7 @@ export class AuthService {
       email,
       password,
       options: {
-        emailRedirectTo: `http://localhost:3000/verify-email?token=${tokenData}`,
+        emailRedirectTo: `https://club-frontend-omega.vercel.app/verify-email?token=${tokenData}`,
         data: {
           full_name,
           is_active: false,
@@ -75,7 +75,7 @@ export class AuthService {
   // Send a password reset email
   async forgotPassword(email: string) {
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: 'http://localhost:3000/reset-password?type=recovery',
+      redirectTo: 'https://club-frontend-omega.vercel.app/reset-password?type=recovery',
     });
     if (error) return { error: error.message };
     return { message: 'Password reset email sent', data };
